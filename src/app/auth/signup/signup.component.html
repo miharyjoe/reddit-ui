@@ -7,7 +7,7 @@
           <h4>Register</h4>
         </div>
         <div class="card-body">
-          <form>
+          <form [formGroup]="signupForm">
             <div class="form-group row">
               <label
                 for="email_address"
@@ -17,12 +17,22 @@
               <div class="col-md-6">
                 <input
                   type="text"
+                  [formControlName="'email'"
+                  ]
                   id="email_address"
                   class="form-control"
                   name="email-address"
                   required
                   autofocus
                 />
+                <span
+                  *ngIf="
+                    !signupForm.get('email').valid &&
+                    signupForm.get('email').touched
+                  "
+                >
+                  Please provide a valid email
+                </span>
               </div>
             </div>
 
@@ -31,7 +41,22 @@
                 >User Name</label
               >
               <div class="col-md-6">
-                <input type="text" class="form-control" required autofocus />
+                <input
+                  type="text"
+                  [formControlName="'username'"
+                  ]
+                  ]class="form-control"
+                  required
+                  autofocus
+                />
+                <span
+                  *ngIf="
+                    !signupForm.get('username').valid &&
+                    signupForm.get('username').touched
+                  "
+                >
+                  Please provide a valid username
+                </span>
               </div>
             </div>
 
@@ -44,11 +69,21 @@
               <div class="col-md-6">
                 <input
                   type="password"
+                  [formControlName="'password'"
+                  ]
                   id="password"
                   class="form-control"
                   name="password"
                   required
                 />
+                <span
+                  *ngIf="
+                    !signupForm.get('password').valid &&
+                    signupForm.get('password').touched
+                  "
+                >
+                  Please provide a valid Password
+                </span>
               </div>
             </div>
 
